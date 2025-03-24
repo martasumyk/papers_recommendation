@@ -92,6 +92,8 @@ Then open [http://localhost:5000](http://localhost:5000) in your browser.
 ---
 
 ## 💡 Future Improvements
+- ❗ Add to-read list and likes
+- ❗ Fix the alignment of the registration page
 - ✅ Toast notifications
 - 🔐 Switch to per-user salt with bcrypt or passlib
 - 🧠 Search history per user
