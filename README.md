@@ -1,4 +1,4 @@
-# 🧠 Paper Search & Profile Web App
+# 🧠 Paper Search
 
 This is a Flask-based web application that allows users to:
 
