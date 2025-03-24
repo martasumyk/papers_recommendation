@@ -67,7 +67,7 @@ simple_project/
 ### ✅ 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/paper-search-flask.git
+git clone https://github.com/martasumyk/papers_recommendation.git
 cd paper-search-flask
 ```
 
