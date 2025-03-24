@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Papers</title>
+
+    <!-- Theme Toggle Support -->
+    <link id="theme-stylesheet" rel="stylesheet" href="">
+    <script src="{{ url_for('static', filename='js/theme-toggle.js') }}"></script>
+</head>
+<body onload="setTheme(localStorage.getItem('theme') || 'light')">
+
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+        <h2>Welcome, {{ username }}</h2>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button onclick="toggleTheme()" class="theme-toggle-btn">🌓 Toggle Theme</button>
+            <div class="avatar-container" style="position: relative;">
+                <img src="{{ url_for('static', filename='avatars/' + avatar) }}" class="avatar" alt="Avatar" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                <div class="dropdown" style="display: none; position: absolute; right: 0; top: 60px; background: white; padding: 10px; border: 1px solid #ccc; border-radius: 5px; z-index: 10;">
+                    <a href="{{ url_for('profile') }}" style="display: block; text-decoration: none; padding: 5px; color: black;">View Profile</a>
+                    <a href="{{ url_for('logout') }}" style="display: block; text-decoration: none; padding: 5px; color: black;">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        // Show dropdown on avatar hover
+        const avatarContainer = document.querySelector('.avatar-container');
+        const dropdown = avatarContainer.querySelector('.dropdown');
+        avatarContainer.addEventListener('mouseenter', () => dropdown.style.display = 'block');
+        avatarContainer.addEventListener('mouseleave', () => dropdown.style.display = 'none');
+    </script>
+
+    <form method="POST" style="text-align: center; margin-top: 30px;">
+        <input type="text" name="query" placeholder="Search for papers..." required style="width: 60%; padding: 10px; border-radius: 5px;">
+        <button type="submit" style="padding: 10px 15px; border-radius: 5px;">Search</button>
+    </form>
+
+    {% if results %}
+        <h3 style="text-align: center; margin-top: 40px;">Search Results:</h3>
+        <div style="max-width: 800px; margin: auto;">
+        {% for paper in results %}
+            <div class="paper-box">
+                <h4>{{ paper.title }}</h4>
+                <p><strong>Authors:</strong> {{ paper.authors }}</p>
+                <p><strong>Published:</strong> {{ paper.published }}</p>
+                <p><a href="{{ paper.pdf_url }}" target="_blank">📄 View PDF</a></p>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+
+</body>
+</html>

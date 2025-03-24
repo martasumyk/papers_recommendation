@@ -1,0 +1,248 @@
+/* Dracula Theme Color Palette */
+:root {
+    --bg: #282a36;
+    --fg: #f8f8f2;
+    --purple: #bd93f9;
+    --pink: #ff79c6;
+    --green: #50fa7b;
+    --yellow: #f1fa8c;
+    --blue: #8be9fd;
+    --comment: #6272a4;
+    --danger: #ff5555;
+}
+
+/* Global */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--blue);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: var(--comment);
+    border-bottom: 2px solid var(--purple);
+}
+
+/* Avatar & Dropdown */
+.avatar-container {
+    position: relative;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid var(--purple);
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--comment);
+    border: 1px solid var(--purple);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    padding: 8px;
+    z-index: 10;
+}
+
+.avatar-container:hover .dropdown {
+    display: block;
+}
+
+.dropdown a {
+    display: block;
+    white-space: nowrap;
+    padding: 6px 10px;
+    color: var(--fg);
+}
+.dropdown a:hover {
+    background-color: var(--purple);
+}
+
+/* Forms */
+form {
+    text-align: center;
+    margin-top: 30px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="file"],
+select {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid var(--comment);
+    background-color: var(--comment);
+    color: var(--fg);
+}
+
+input::placeholder {
+    color: #ccc;
+}
+
+button {
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--purple);
+    color: var(--bg);
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: var(--pink);
+}
+
+/* Paper Cards */
+.paper-box {
+    background: #343746; /* darker than #f9f9f9, lighter than body */
+    color: var(--fg);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    border: 1px solid var(--comment);
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background 0.3s ease;
+}
+
+.paper-box h4 {
+    color: var(--blue);
+    margin-top: 0;
+}
+
+.paper-box p {
+    color: var(--blue);
+}
+
+.paper-box a {
+    color: var(--pink);
+    font-weight: bold;
+}
+
+.paper-box a:hover {
+    text-decoration: underline;
+}
+
+
+/* Alerts */
+.alert-success {
+    background-color: var(--green);
+    color: var(--bg);
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Profile Page */
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.card {
+    background: var(--comment);
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.avatar-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatar-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--purple);
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Profile Form */
+.profile-form label {
+    display: block;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="url"],
+.profile-form input[type="file"],
+.profile-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--comment);
+    border-radius: 5px;
+    background-color: var(--bg);
+    color: var(--fg);
+}
+
+.profile-form button {
+    background-color: var(--purple);
+    color: var(--bg);
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.profile-form button:hover {
+    background-color: var(--pink);
+}
+
+.back-button {
+    text-decoration: none;
+    color: var(--purple);
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+/* Headings */
+h2, h3, h4 {
+    color: var(--yellow);
+    text-align: center;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body { display: none; }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Your Profile</title>
+
+    <!-- Dynamic Theme Support -->
+    <script src="{{ url_for('static', filename='js/theme-toggle.js') }}"></script>
+    <link id="theme-stylesheet" rel="stylesheet" href="">
+
+    <!-- Early fallback style for avatar -->
+    <style>
+        .avatar-large {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          object-fit: cover;
+          display: block;
+          margin: 0 auto 10px;
+        }
+    </style>
+</head>
+<body onload="setTheme(localStorage.getItem('theme') || 'light')">
+
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+        <a href="{{ url_for('index') }}" class="back-button">← Back</a>
+        <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+    </div>
+
+    <div class="container">
+        <div class="card">
+
+            <div class="avatar-section">
+                <img src="{{ url_for('static', filename='avatars/' + user.avatar) }}"
+                    class="avatar-large"
+                    width="120"
+                    height="120"
+                    alt="Avatar">
+                <h2>{{ username }}</h2>
+                <p><a href="{{ user.linkedin }}" target="_blank">🔗 LinkedIn</a></p>
+            </div>
+
+            {% if message %}
+                <div class="alert-success">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+            <form method="POST" enctype="multipart/form-data" class="profile-form">
+                <label for="avatar">Change Avatar</label>
+                <input type="file" name="avatar" accept="image/*"><br>
+
+                <label for="field">Field of Interest</label>
+                <input type="text" name="field" value="{{ user.field }}">
+
+                <label for="position">Your Position</label>
+                <input type="text" name="position" value="{{ user.position }}">
+
+                <label for="level">Academic Level</label>
+                <select name="level">
+                    <option value="School Student" {% if user.level == "School Student" %}selected{% endif %}>School Student</option>
+                    <option value="Undergraduate" {% if user.level == "Undergraduate" %}selected{% endif %}>Undergraduate</option>
+                    <option value="Bachelor" {% if user.level == "Bachelor" %}selected{% endif %}>Bachelor</option>
+                    <option value="Master" {% if user.level == "Master" %}selected{% endif %}>Master</option>
+                    <option value="Doctor" {% if user.level == "Doctor" %}selected{% endif %}>Doctor</option>
+                </select>
+
+                <label for="linkedin">LinkedIn</label>
+                <input type="url" name="linkedin" value="{{ user.linkedin }}">
+
+                <button type="submit">Update Profile</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
